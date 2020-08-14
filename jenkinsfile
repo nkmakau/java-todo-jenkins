@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    tools {
+        gradle "Gradle-6"
+    }
+    stages {
+        stage('Clone repository') {
+            steps {
+                git 'https://github.com/nkmakau/java-todo-jenkins'
+            }
+        }
+        stage('Build Project') {
+            steps {
+                sh 'gradle build'
+            }
+        }
+        stage('Tests') {
+            steps {
+                sh 'gradle test'
+            }
+        }
+        stage('Deploy to Heroku') {
+            steps {
+                withCredentials([usernameColonPassword(credentialsId: 'nosh', variable: 'HEROKU_CREDENTIALS' )]){
+                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/stormy-island-44841.git master'
+                }
+                
+            }
+            
+        } 
+    }
+}
