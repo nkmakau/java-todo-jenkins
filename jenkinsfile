@@ -53,7 +53,7 @@ pipeline {
                 PROJECT_NAME = "java-todo-jenkins"
             }
             steps {
-                withSonarQubeEnv(installationName: 'TodoSonarQubeScanner', credentialsId: 'todosonarqubescan') {
+                withSonarQubeEnv(installationName: 'SonarQubeScanner', credentialsId: 'todosonarqubescan') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.java.binaries=build/classes/java/ \
                     -Dsonar.projectKey=$PROJECT_NAME \
                     -Dsonar.sources=.'''
