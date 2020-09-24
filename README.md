@@ -8,3 +8,6 @@ Author Victor Njonge
 Cloned: 14th August 2020
 Author: Noah Makau
 Date Modified: 14th August 2020.
+
+Additions: SonarQube Scanner
+Date: 24th September 2020.
